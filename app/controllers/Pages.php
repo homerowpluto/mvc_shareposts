@@ -5,6 +5,9 @@ class Pages extends Controller {
   }
 
   public function index() {
+    if (isLoggedIn()) {
+      redirect('posts');
+    }
 
     $data = [
       'title' => 'SharePosts',
@@ -18,8 +21,7 @@ class Pages extends Controller {
   public function about() {
     $data = [
       'title' => 'About Us',
-      'description' => 'App to share posts with other users'
-
+      'description' => 'App to share posts with other users',
     ];
 
     $this->view('pages/about', $data);
